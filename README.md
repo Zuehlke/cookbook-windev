@@ -106,8 +106,8 @@ The `zip_packages` attribute expects a hash of zip definitions.
 
 Possible parameters for a zip file:
   
-  * source - The URL from where th installer can be downloaded
-  * save_as - Te filename for the downloaded content (relative to `sofware_depot`)
+  * source - the URL from where th installer can be downloaded
+  * save_as - the filename for the downloaded content (relative to `sofware_depot`)
   * unpack - location to unpack the archive
   * version - the version of the software
   
