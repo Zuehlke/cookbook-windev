@@ -11,9 +11,13 @@ include_recipe 'windev::depot'
 
 node['drivers'].each do |pkg|
   windev_install_driver pkg["name"] do
-    source pkg["source"]
+    if pkg["save_as"]
+      source pkg["source"]
+      cache "depot"=>node["software_depot"],"save_as"=>pkg["save_as"]
+    else
+      source "#{node['software_depot']}/#{pkg["source"]}"
+    end
     version pkg["version"]
-    cache "depot"=>node["software_depot"],"save_as"=>pkg["save_as"]
     certificate pkg["certificate"]
   end
 end
