@@ -36,12 +36,16 @@ node['installer_packages'].each do |pkg|
 end
 
 node['zip_packages'].each do |pkg|
-  installer=::File.join(node["software_depot"],pkg['save_as'])
   version=::File.expand_path("#{pkg['unpack']}/#{pkg['version']}.version")
   unless ::File.exists?(version)
-    windev_cache_package pkg["save_as"] do
-      source pkg["source"]
-      depot node['software_depot']
+    if pkg["source"]
+      windev_cache_package pkg["save_as"] do
+        source pkg["source"]
+        depot node['software_depot']
+      end
+      installer=::File.join(node["software_depot"],pkg['save_as'])
+    else
+      installer=::File.join(node["software_depot"],pkg['archive'])
     end
     directory pkg['unpack'] do
       action :delete
