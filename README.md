@@ -12,18 +12,16 @@ The location of the local software is specified in the 'software_depot' attribut
 The default value for 'software_depot' is 'software', which will create the directory at the point of chef's execution.
 
 Example:
-```
+```ruby
 {"software_depot": "software"}
 ```
 
 You can define a node attribute 'cache' to specify packages to download and cache locally in software_depot.
 'cache' is an array of hashes:
-```
+```ruby
 {
   "software_depot": "software",
-  "cache":[{"source":"http://bin.repo/foo.zip","save_as":"foo.zip"}
-  ]
-
+  "cache":[{"source":"http://bin.repo/foo.zip","save_as":"foo.zip"}]
 }
 ```
 
@@ -40,7 +38,7 @@ The features recipe:
 and uninstalls a list of Windows features provided in ```node['windows_features']['remove']```
 
 Example:
-```
+```ruby
 {"windows_features": {
     "remove": ["MediaPlayback","WindowsMediaPlayer","MediaCenter","TabletPCOC","FaxServicesClientPackage",
         "Xps-Foundation-Xps-Viewer","Printing-XPSServices-Features","Internet-Explorer-Optional-amd64"]}
@@ -57,7 +55,7 @@ Optionally you can provide a certificate (add it to the files/default in the coo
 
 The certificate should either be a part of the driver package or provided in the cookbook's files.
 
-```
+```ruby
 "drivers":[
     {"name":"Driver","source":"http://bin.repo/driver.zip","save_as":"driver.zip","certificate":"cert.cer","version":"0.01"}
   ]
@@ -85,7 +83,7 @@ Possible parameters for a windows package:
 
 The installers need to be capable of operating unattended (silent or quiet mode).
 
-```
+```ruby
 {
   "installer_packages": [
 #This entry will download the installer and cache it locally
@@ -114,7 +112,7 @@ Possible parameters for a zip file:
   * version - the version of the software
   
 Example:
-```
+```ruby
 {
   "zip_packages": [
     {"source":"ftp://bin.repo/foo.zip","save_as":"foo.zip",
