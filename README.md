@@ -35,7 +35,7 @@ The features recipe:
  * Creates a GodMode folder<sup>1</sup>
  * Deactivates the action center 
 
-and uninstalls a list of Windows features provided in ```node['windows_features']['remove']```
+and uninstalls a list of Windows features provided in `node['windows_features']['remove']`
 
 Example:
 ```ruby
@@ -69,13 +69,13 @@ This recipe provides two ways for software installation: installer-driven or fro
 
 ###Installer driven
 
-The ```installer_packages``` attribute expects a hash of installer definitions.
+The `installer_packages` attribute expects a hash of installer definitions.
 
 Possible parameters for a windows package:
   
   * name - Must match the name appearing in "Uninstall Programs" in the Control Panel.
-  * source & save_as - The URL from where the installer can be downloaded and the filename for the downloaded content (relative to ```sofware_depot```)
-  * installer - if no cache is used (source & save_as are ommited) installer should be the name to the installer executable. Relative paths are relative to ```software_depot```
+  * source & save_as - The URL from where the installer can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
+  * installer - if no cache is used (source & save_as are ommited) installer should be the name to the installer executable. Relative paths are relative to `software_depot`
   * version - The software version
   * options - command line options to pass to the installer
   * type - when "custom" then Chef will not try to guess the type and use the path options only.
@@ -102,12 +102,12 @@ The installers need to be capable of operating unattended (silent or quiet mode)
 
 ###Zip files
 
-The ```zip_packages``` attribute expects a hash of zip definitions.
+The `zip_packages` attribute expects a hash of zip definitions.
 
 Possible parameters for a zip file:
   
   * source - The URL from where th installer can be downloaded
-  * save_as - Te filename for the downloaded content (relative to ```sofware_depot```)
+  * save_as - Te filename for the downloaded content (relative to `sofware_depot`)
   * unpack - location to unpack the archive
   * version - the version of the software
   
@@ -126,7 +126,7 @@ Downloads the latest certificate bundle for OpenSSL based applications and sets 
 
 This bundle is required by msys, vagrant, packer and Ruby to properly verify SSL certificates.
 
-The ```certificate_bundle``` attribute contains the URL to the bundle. The default is http://curl.haxx.se/ca/cacert.pem
+The `certificate_bundle` attribute contains the URL to the bundle. The default is http://curl.haxx.se/ca/cacert.pem
 
 
 # Resource providers
