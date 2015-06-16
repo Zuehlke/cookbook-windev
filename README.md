@@ -33,7 +33,8 @@ The features recipe:
 
  * Turns off the Windows firewall
  * Creates a GodMode folder<sup>1</sup>
- * Deactivates the action center 
+ * Deactivates the action center
+ * Deactivates the Windows firewall
 
 and uninstalls a list of Windows features provided in `node['windows_features']['remove']`
 
@@ -57,7 +58,9 @@ The certificate should either be a part of the driver package or provided in the
 
 ```ruby
 "drivers":[
-    {"name":"Driver","source":"http://bin.repo/driver.zip","save_as":"driver.zip","certificate":"cert.cer","version":"0.01"}
+    {"name":"Driver","source":"http://bin.repo/driver.zip","save_as":"driver.zip","certificate":"cert.cer","version":"0.01"},
+#If no save_as is defined then expect the file relative to software_depot
+    {"name":"Driver","source":"driver.zip","certificate":"cert.cer","version":"0.01"}
   ]
 ```
 
@@ -106,8 +109,8 @@ The `zip_packages` attribute expects a hash of zip definitions.
 
 Possible parameters for a zip file:
   
-  * source - the URL from where th installer can be downloaded
-  * save_as - the filename for the downloaded content (relative to `sofware_depot`)
+  * archive - defines the filename for the package if no cache is used (source & save_as are ommited). Relative to `sofware_depot`
+  * source & save_as - The URL from where the package can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
   * unpack - location to unpack the archive
   * version - the version of the software
   
@@ -115,7 +118,12 @@ Example:
 ```ruby
 {
   "zip_packages": [
+#This entry downloads the file and caches it in software_depot before unpacking
     {"source":"ftp://bin.repo/foo.zip","save_as":"foo.zip",
+      "version":"0.0","unpack":"c:/tools/foo"
+    },
+#This entry expects the package in the software_depot directory
+    {"archive":"foo.zip",
       "version":"0.0","unpack":"c:/tools/foo"
     }
   ]
