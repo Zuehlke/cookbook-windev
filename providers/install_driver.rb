@@ -30,13 +30,14 @@ action :install do
   versionfile="#{tmpfile}/#{new_resource.version}.version"
 
   if !::File.exists?(versionfile)
-    installer=new_resource.name
     if new_resource.cache 
       windev_cache_package new_resource.cache['save_as'] do
         source new_resource.source
         depot new_resource.cache['depot']
       end
       installer=::File.expand_path(::File.join(new_resource.cache['depot'],new_resource.cache['save_as']))
+    else
+      installer=::File.expand_path(::File.join(new_resource.source))
     end
 
     directory tmpfile do
