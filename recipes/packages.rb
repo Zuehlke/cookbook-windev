@@ -9,7 +9,7 @@ include_recipe 'windev::depot'
 
 ::Chef::Recipe.send(:include, Windows::Helper)
 
-node['installer_packages'].each do |pkg|
+node.fetch('installer_packages',[]).each do |pkg|
   unless is_package_installed?(pkg['name']) && installed_packages[pkg['name']][:version] == pkg['version']
     if pkg["source"]
       windev_cache_package pkg["save_as"] do
@@ -35,7 +35,7 @@ node['installer_packages'].each do |pkg|
   end
 end
 
-node['zip_packages'].each do |pkg|
+node.fetch('zip_packages',[]).each do |pkg|
   version=::File.expand_path("#{pkg['unpack']}/#{pkg['version']}.version")
   unless ::File.exists?(version)
     if pkg["source"]
