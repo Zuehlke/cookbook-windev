@@ -9,7 +9,7 @@
 include_recipe 'windows::reboot_handler'
 include_recipe 'windev::depot'
 
-node['drivers'].each do |pkg|
+node.fetch('drivers',[]).each do |pkg|
   windev_install_driver pkg["name"] do
     if pkg["save_as"]
       source pkg["source"]
