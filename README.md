@@ -31,7 +31,6 @@ You can define a node attribute 'cache' to specify packages to download and cach
 
 The features recipe:
 
- * Turns off the Windows firewall
  * Creates a GodMode folder<sup>1</sup>
  * Deactivates the action center
  * Deactivates the Windows firewall
@@ -129,13 +128,6 @@ Example:
   ]
 }
 ```
-##[ssl.rb](recipes/ssl.rb)
-Downloads the latest certificate bundle for OpenSSL based applications and sets up the environment.
-
-This bundle is required by msys, vagrant, packer and Ruby to properly verify SSL certificates.
-
-The `certificate_bundle` attribute contains the URL to the bundle. The default is http://curl.haxx.se/ca/cacert.pem
-
 
 # Resource providers
 
