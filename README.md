@@ -128,6 +128,20 @@ Example:
   ]
 }
 ```
+##[environment.rb](recipes/environment.rb)
+
+Provides an easy way to defien environment variables in JSON configurations.
+
+Provide an _environment_ attribute that points to a hash of 'name'->'value' for the environment variables you want to define.
+
+Example:
+```
+"environment":{
+  "PATH":"C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
+  "GIT_SSL_NO_VERIFY":"true",
+  "devmgr_show_nonpresent_devices":"1"
+    }
+```
 
 # Resource providers
 
