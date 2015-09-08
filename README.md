@@ -5,6 +5,7 @@ One cookbook with recipes and resources for setting up a Windows development env
 ##Recipes
 
 ##[depot.rb](recipes/depot.rb)
+
 This recipe just sets up the local software cache. It is used by all recipes that install software.
 
 The location of the local software is specified in the 'software_depot' attribute.
@@ -12,12 +13,14 @@ The location of the local software is specified in the 'software_depot' attribut
 The default value for 'software_depot' is 'software', which will create the directory at the point of chef's execution.
 
 Example:
+
 ```ruby
 {"software_depot": "software"}
 ```
 
 You can define a node attribute 'cache' to specify packages to download and cache locally in software_depot.
 'cache' is an array of hashes:
+
 ```ruby
 {
   "software_depot": "software",
@@ -38,6 +41,7 @@ The features recipe:
 and uninstalls a list of Windows features provided in `node['windows_features']['remove']`
 
 Example:
+
 ```ruby
 {"windows_features": {
     "remove": ["MediaPlayback","WindowsMediaPlayer","MediaCenter","TabletPCOC","FaxServicesClientPackage",
@@ -114,14 +118,15 @@ Possible parameters for a zip file:
   * version - the version of the software
   
 Example:
+
 ```ruby
 {
   "zip_packages": [
-#This entry downloads the file and caches it in software_depot before unpacking
+####This entry downloads the file and caches it in software_depot before unpacking
     {"source":"ftp://bin.repo/foo.zip","save_as":"foo.zip",
       "version":"0.0","unpack":"c:/tools/foo"
     },
-#This entry expects the package in the software_depot directory
+####This entry expects the package in the software_depot directory
     {"archive":"foo.zip",
       "version":"0.0","unpack":"c:/tools/foo"
     }
@@ -135,6 +140,7 @@ Provides an easy way to defien environment variables in JSON configurations.
 Provide an _environment_ attribute that points to a hash of 'name'->'value' for the environment variables you want to define.
 
 Example:
+
 ```
 "environment":{
   "PATH":"C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
