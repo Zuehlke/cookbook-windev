@@ -1,3 +1,7 @@
+#0.3.1
+Depot directory creation is now recursive
+Fixed the license metadata
+
 #0.3.0
 Removed the SSL recipe
 Added the environment recipe

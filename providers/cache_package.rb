@@ -17,7 +17,10 @@ action :cache do
   if validate_source_attribute(new_resource)
     Chef::Log.info("Caching #{new_resource.source} in #{new_resource.depot} as #{new_resource.save_as}")
     save_as=::File.join(new_resource.depot,new_resource.save_as)
-    directory new_resource.depot
+    directory new_resource.depot do
+      action :create
+      recursive true
+    end
     remote_file save_as do
       source new_resource.source
       action :create_if_missing
