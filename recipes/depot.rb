@@ -5,7 +5,10 @@
 #
 # Copyright (c) 2014 Zühlke, All Rights Reserved.
 
-directory node["software_depot"]
+directory node["software_depot"] do
+  action :create
+  recursive true
+end
 
 node.fetch("cache",[]).each do |e|
   windev_cache_package e['save_as'] do
