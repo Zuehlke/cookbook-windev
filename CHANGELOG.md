@@ -1,3 +1,7 @@
+#0.3.2
+Conformed to foodcritic warnings
+Removed some obsolete cruft
+
 #0.3.1
 Depot directory creation is now recursive
 Fixed the license metadata

@@ -1,5 +1,7 @@
 #All-in-one Windows development environments
 
+[![Build Status](https://travis-ci.org/Zuehlke/cookbook-windev.svg)](http://travis-ci.org/Zuehlke/cookbook-windev)
+
 One cookbook with recipes and resources for setting up a Windows development environment.
 
 ##Recipes

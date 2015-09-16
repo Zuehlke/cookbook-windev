@@ -11,16 +11,15 @@ include_recipe 'windev::depot'
 
 node.fetch('installer_packages',[]).each do |pkg|
   unless is_package_installed?(pkg['name']) && installed_packages[pkg['name']][:version] == pkg['version']
+    installer= ::File.join(node["software_depot"],pkg.fetch('installer',""))
     if pkg["source"]
-      windev_cache_package pkg["save_as"] do
+      windev_cache_package save_as do
         source pkg["source"]
         depot node['software_depot']
       end
-    end
-    installer= ::File.join(node["software_depot"],pkg.fetch('installer',""))
-    if pkg['save_as']
       installer= ::File.join(node["software_depot"],pkg['save_as'])
     end
+
     windows_package pkg['name'] do
       source installer
       if pkg['type'] 
