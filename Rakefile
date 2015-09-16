@@ -12,5 +12,5 @@ task :default =>[:foodcritic]
 task :foodcritic do
  sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic cookbook})
  prepare_foodcritic_sandbox(sandbox)
- sh "foodcritic --epic-fail any #{File.dirname(sandbox)}"
+ sh "foodcritic --epic-fail correctness #{File.dirname(sandbox)}"
 end
