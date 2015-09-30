@@ -1,3 +1,6 @@
+#0.3.3
+Fixed a bug in the caching of installers
+
 #0.3.2
 Conformed to foodcritic warnings
 Removed some obsolete cruft
