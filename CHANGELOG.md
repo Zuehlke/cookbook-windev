@@ -1,3 +1,6 @@
+#0.4.0
+Chocolatey integration 
+
 #0.3.3
 Fixed a bug in the caching of installers
 
