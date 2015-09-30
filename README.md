@@ -4,6 +4,16 @@
 
 One cookbook with recipes and resources for setting up a Windows development environment.
 
+##Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
+
+Please do if it suits you! 
+
+Having said that, windev tries to cover two requirements that are not that easily satisfied with the chocolatey cookbook:
+
+Control the installation location. This can be done in chocolatey as well, but you need to know the installer parameters. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
+
+Deal with configuration files instead of recipes. Basically we want to have the list of software in the JSON configuration instead of a recipe and expose only the parameters that are absolutely necessary. We can achieve this with a chocolatey_packages wrapper similar to installer_packages once we decide to add chocolatey as a dependency to windev.
+
 ##Recipes
 
 ##[depot.rb](recipes/depot.rb)
