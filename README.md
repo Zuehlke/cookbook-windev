@@ -8,11 +8,9 @@ One cookbook with recipes and resources for setting up a Windows development env
 
 Please do if it suits you! 
 
-Having said that, windev tries to cover two requirements that are not that easily satisfied with the chocolatey cookbook:
+There's also a convenience wrapper for chocolatey added to windev since 0.4.0.
 
-Control the installation location. This can be done in chocolatey as well, but you need to know the installer parameters. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
-
-Deal with configuration files instead of recipes. Basically we want to have the list of software in the JSON configuration instead of a recipe and expose only the parameters that are absolutely necessary. We can achieve this with a chocolatey_packages wrapper similar to installer_packages once we decide to add chocolatey as a dependency to windev.
+Having said that, controlling the installation location is more obvious in windev. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
 
 ##Recipes
 
@@ -83,13 +81,13 @@ The certificate should either be a part of the driver package or provided in the
 
 ##[packages.rb](recipes/packages.rb)
 
-This recipe provides two ways for software installation: installer-driven or from a zip file.
+This recipe provides three ways for software installation: installer-driven, from a zip file or hrough [chocolatey](https://chocolatey.org/).
 
 ###Installer driven
 
-The `installer_packages` attribute expects a hash of installer definitions.
+The `installer_packages` attribute expects an array of installer definitions.
 
-Possible parameters for a windows package:
+Each installer definition is a hash with parameters:
   
   * name - Must match the name appearing in "Uninstall Programs" in the Control Panel.
   * source & save_as - The URL from where the installer can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
@@ -120,9 +118,9 @@ The installers need to be capable of operating unattended (silent or quiet mode)
 
 ###Zip files
 
-The `zip_packages` attribute expects a hash of zip definitions.
+The `zip_packages` attribute expects an array of zip definitions. 
 
-Possible parameters for a zip file:
+Each zip definition is a hash with parameters:
   
   * archive - defines the filename for the package if no cache is used (source & save_as are ommited). Relative to `sofware_depot`
   * source & save_as - The URL from where the package can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
@@ -145,6 +143,20 @@ Example:
   ]
 }
 ```
+
+###Chocolatey
+
+The `choco_packages` attribute expects an array of chocolatey package definitions.
+
+Each package definition is a hash with parameters:
+
+  * name - name of the package
+  * source 
+  * version - version of the package to use
+  * args - arguments to the installation
+
+All parameters but `name` are optional. Chocolatey will only be installed if choco_packages is not empty
+
 ##[environment.rb](recipes/environment.rb)
 
 Provides an easy way to defien environment variables in JSON configurations.
