@@ -81,7 +81,7 @@ The certificate should either be a part of the driver package or provided in the
 
 ##[packages.rb](recipes/packages.rb)
 
-This recipe provides three ways for software installation: installer-driven, from a zip file or hrough [chocolatey](https://chocolatey.org/).
+This recipe provides three ways for software installation: installer-driven, from a zip file or through [chocolatey](https://chocolatey.org/).
 
 ###Installer driven
 
