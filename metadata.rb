@@ -8,4 +8,5 @@ version          '0.4.0'
 
 supports 'windows'
 
+depends 'windows',"~>1.38.2"
 depends 'chocolatey',"~>0.4.0"
