@@ -60,3 +60,23 @@ node.fetch('zip_packages',[]).each do |pkg|
     end
   end
 end
+
+choco_packages=node.fetch('choco_packages',[])
+
+unless choco_packages.empty?
+  include_recipe 'chocolatey::default'
+end
+
+choco_packages.each do |pkg|
+  if pkg["name"]
+    pkg_source=pkg.fetch("source","")
+    pkg_args=pkg.fetch("args","")
+    pkg_version=pkg.fetch("version","")
+    chocolatey pkg["name"] do
+      version pkg_version unless pkg_version.empty?
+      source pkg_source unless pkg_source.empty?
+      args pkg_args unless pkg_args.empty?
+      action :install
+    end
+  end
+end
