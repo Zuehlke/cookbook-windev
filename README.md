@@ -159,7 +159,7 @@ All parameters but `name` are optional. Chocolatey will only be installed if cho
 
 ##[environment.rb](recipes/environment.rb)
 
-Provides an easy way to defien environment variables in JSON configurations.
+Provides an easy way to define environment variables in JSON configurations.
 
 Provide an _environment_ attribute that points to a hash of 'name'->'value' for the environment variables you want to define.
 
