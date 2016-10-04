@@ -16,11 +16,18 @@ node.fetch('installer_packages',[]).each do |pkg|
         source pkg["source"]
         depot node['software_depot']
       end
-      if pkg["installer"]
-        windows_zipfile node['software_depot'] do
+      if pkg["unpack"]
+        unpackPath = File.join(node["software_depot"],pkg['unpack'])
+        directory unpackPath do
+          action :delete
+          recursive true
+        end
+        windows_zipfile unpackPath do
           source ::File.join(node["software_depot"],pkg['save_as'])
           action :unzip
         end
+      end
+      if pkg["installer"]
         installer= ::File.join(node["software_depot"],pkg['installer'])
       else
         installer= ::File.join(node["software_depot"],pkg['save_as'])
