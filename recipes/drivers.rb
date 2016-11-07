@@ -3,10 +3,8 @@
 # Cookbook Name:: windev
 # Recipe:: drivers
 #
-# Copyright (c) 2014 Zühlke, All Rights Reserved.
+# Copyright (c) 2014-2016 Zühlke, All Rights Reserved.
 
-
-include_recipe 'windows::reboot_handler'
 include_recipe 'windev::depot'
 
 node.fetch('drivers',[]).each do |pkg|

@@ -100,7 +100,7 @@ Each installer definition is a hash with parameters:
 
 The installers need to be capable of operating unattended (silent or quiet mode).
 
-```ruby
+```json
 {
   "installer_packages": [
 #This entry will download the installer and cache it locally
@@ -112,15 +112,14 @@ The installers need to be capable of operating unattended (silent or quiet mode)
     {"name":"Microsoft Visual Studio Professional 2013 with Update 4",
       "installer":"VisualStudio2013\\vs_professional.exe",
       "version":"12.0.31101","type":"custom","timeout":60000,"options":"/Passive /LOG C:\\VS_2013_U3.log /NoRestart /NoWeb /NoRefresh /CustomInstallPath C:\\tools\\VisualStudio2013\\"
-    }
+    },
 #This entry downloads an installer wrapped in a .zip file, unpacks and then executes
-    {"name":"Slik SVN",
+    {"name":"Slik Subversion 1.9.4 (x64)",
       "source":"https://sliksvn.com/pub/Slik-Subversion-1.9.4-x64.zip","save_as":"Slik-Subversion-1.9.4-x64.zip",
-      "unpack":"Slik-Subversion-1.9.4-x64/","installer":"Slik-Subversion-1.9.4-x64.msi",
-      "version":"1.9.4"
+      "unpack":"Slik-Subversion-1.9.4-x64/","installer":"Slik-Subversion-1.9.4-x64/Slik-Subversion-1.9.4-x64.msi",
+      "version":"1.9.4139"
     }
   ]
-  }
 }
 
 
@@ -142,7 +141,7 @@ Each zip definition is a hash with parameters:
 
 Example:
 
-```ruby
+```json
 {
   "zip_packages": [
 ####This entry downloads the file and caches it in software_depot before unpacking
@@ -178,7 +177,7 @@ Provide an _environment_ attribute that points to a hash of 'name'->'value' for 
 
 Example:
 
-```
+```json
 "environment":{
   "PATH":"C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
   "GIT_SSL_NO_VERIFY":"true",
