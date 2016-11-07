@@ -33,15 +33,17 @@ node.fetch('installer_packages',[]).each do |pkg|
       installer= ::File.join(node["software_depot"],pkg['save_as'])
     end
     
-    ruby "The installer exists" do
-      raise "Installer #{File.expand_path(installer)} not found" unless File.exist?(File.expand_path(installer))
+    ruby_block "installer_exists" do
+      block do
+        raise "Installer #{File.expand_path(installer)} not found" unless File.exist?(File.expand_path(installer))
+      end
+      action :run
     end
-    package pkg['name'] do
+
+    package pkg['name'] do # ~FC009
       provider Chef::Provider::Package::Windows
       source File.expand_path(installer)
-      if pkg['type'] 
-        installer_type pkg['type'].to_sym
-      end
+      installer_type pkg['type'].to_sym if pkg['type'] 
       options pkg['options']
       version pkg['version']
       timeout pkg.fetch('timeout',600)
