@@ -3,7 +3,7 @@
 # Cookbook Name:: windev
 # Recipe:: depot
 #
-# Copyright (c) 2014 Zühlke, All Rights Reserved.
+# Copyright (c) 2014-2016 Zühlke, All Rights Reserved.
 
 directory node["software_depot"] do
   action :create

@@ -6,7 +6,7 @@ One cookbook with recipes and resources for setting up a Windows development env
 
 ##Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
 
-Please do if it suits you! 
+Please do if it suits you!
 
 There's also a convenience wrapper for chocolatey added to windev since 0.4.0.
 
@@ -88,18 +88,19 @@ This recipe provides three ways for software installation: installer-driven, fro
 The `installer_packages` attribute expects an array of installer definitions.
 
 Each installer definition is a hash with parameters:
-  
+
   * name - Must match the name appearing in "Uninstall Programs" in the Control Panel.
   * source & save_as - The URL from where the installer can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
+  * unpack - Sometimes installers are packaged in zip files (even with HTTP compression people still do that!). 'unpack' defines a relative path to put the zip contents in so that we can get to the installer
   * installer - if no cache is used (source & save_as are ommited) installer should be the name to the installer executable. Relative paths are relative to `software_depot`
   * version - The software version
   * options - command line options to pass to the installer
   * type - when "custom" then Chef will not try to guess the type and use the path options only.
-  * timeout - Time in seconds to wait for the installer to finish. Default is 600 
+  * timeout - Time in seconds to wait for the installer to finish. Default is 600
 
 The installers need to be capable of operating unattended (silent or quiet mode).
 
-```ruby
+```json
 {
   "installer_packages": [
 #This entry will download the installer and cache it locally
@@ -111,25 +112,36 @@ The installers need to be capable of operating unattended (silent or quiet mode)
     {"name":"Microsoft Visual Studio Professional 2013 with Update 4",
       "installer":"VisualStudio2013\\vs_professional.exe",
       "version":"12.0.31101","type":"custom","timeout":60000,"options":"/Passive /LOG C:\\VS_2013_U3.log /NoRestart /NoWeb /NoRefresh /CustomInstallPath C:\\tools\\VisualStudio2013\\"
+    },
+#This entry downloads an installer wrapped in a .zip file, unpacks and then executes
+    {"name":"Slik Subversion 1.9.4 (x64)",
+      "source":"https://sliksvn.com/pub/Slik-Subversion-1.9.4-x64.zip","save_as":"Slik-Subversion-1.9.4-x64.zip",
+      "unpack":"Slik-Subversion-1.9.4-x64/","installer":"Slik-Subversion-1.9.4-x64/Slik-Subversion-1.9.4-x64.msi",
+      "version":"1.9.4139"
     }
   ]
 }
+
+
+
 ```
+
+
 
 ###Zip files
 
-The `zip_packages` attribute expects an array of zip definitions. 
+The `zip_packages` attribute expects an array of zip definitions.
 
 Each zip definition is a hash with parameters:
-  
+
   * archive - defines the filename for the package if no cache is used (source & save_as are ommited). Relative to `sofware_depot`
   * source & save_as - The URL from where the package can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
   * unpack - location to unpack the archive
   * version - the version of the software
-  
+
 Example:
 
-```ruby
+```json
 {
   "zip_packages": [
 ####This entry downloads the file and caches it in software_depot before unpacking
@@ -151,7 +163,7 @@ The `choco_packages` attribute expects an array of chocolatey package definition
 Each package definition is a hash with parameters:
 
   * name - name of the package
-  * source 
+  * source
   * version - version of the package to use
   * args - arguments to the installation
 
@@ -165,7 +177,7 @@ Provide an _environment_ attribute that points to a hash of 'name'->'value' for 
 
 Example:
 
-```
+```json
 "environment":{
   "PATH":"C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
   "GIT_SSL_NO_VERIFY":"true",

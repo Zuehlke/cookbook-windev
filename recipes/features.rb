@@ -2,7 +2,7 @@
 # Cookbook Name:: vm
 # Recipe:: features
 #
-# Copyright (c) 2014 Zühlke, All Rights Reserved.
+# Copyright (c) 2014-2016 Zühlke, All Rights Reserved.
 
 node['windows_features']['remove'].each do |feat|
   windows_feature(feat)do 
