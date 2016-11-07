@@ -1,3 +1,5 @@
+require 'stove/rake_task'
+Stove::RakeTask.new
 
 def prepare_foodcritic_sandbox(sandbox)
   files = %w{*.md *.rb attributes definitions files libraries providers
