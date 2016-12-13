@@ -22,9 +22,15 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersio
   ]
   action :create
 end
-
+#
 windows_auto_run 'Chef Run' do
   program "echo"
   args    ""
   action  :remove
+end
+#
+reboot "AutoChefReboot" do
+  action :request_reboot
+  reason 'Need to reboot to remove the last traces of auto_chef.'
+  delay_mins 1
 end
