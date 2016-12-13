@@ -12,6 +12,24 @@ There's also a convenience wrapper for chocolatey added to windev since 0.4.0.
 
 Having said that, controlling the installation location is more obvious in windev. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
 
+## [auto_chef](recipes/auto_chef.rb)
+
+auto_chef works around the need to reboot Windows multiple times during a Chef run.
+
+It creates a temporary admin user and registers an auto logon script so that in case of a reboot the run can continue.
+
+The auto logon script is controlled via the environment variables CHEF_SCRIPT and CHEF_CONFIG.
+
+CHEF_SCRIPT is the script and CHEF_CONFIG is passed as a parameter to it.
+
+The remove_auto_chef recipe undoes all changes effected by auto_chef.
+
+The idea is you use auto_chef in the beginning, add any recipes that require or cause reboots and as long as you don't get yourself in an endless reboot loop you clean up at the end with remove_auto_chef.
+
+*NOTE for users of vagrant*: if you are running your scripts from c:\vagrant then auto_chef will inexplicably do nothing.
+
+This happens because Windows runs the startup scripts before mounting the network shares, so the startup fails to find the script.
+
 ## [depot.rb](recipes/depot.rb)
 
 This recipe just sets up the local software cache. It is used by all recipes that install software.
