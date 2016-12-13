@@ -7,6 +7,13 @@
 # Copyright (c) 2014-2016 Zühlke, All Rights Reserved.
 
 #Create a user to restart the process after booting
+
+cmd=ENV["CHEF_SCRIPT"]
+raise "windev::auto_chef: CHEF_SCRIPT not defined, cannot register Chef for startup" unless cmd
+cmd_params=ENV["CHEF_CONFIG"]
+cmd_params||=node.fetch("chef",{})["config"]
+raise "windev::auto_chef: No Chef configuration attribute defined. Add node[\"chef\"][\"config\"] to your configuration or define CHEF_CONFIG" unless cmd_params
+
 user "chef-auto-start" do
   comment "Chef installation user"
   password 'chef-auto-start'
@@ -27,14 +34,7 @@ registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersio
   ]
   action :create
 end
-
 #Register the chef command to run on startup
-cmd=ENV["CHEF_SCRIPT"]
-raise "CHEF_SCRIPT not defined, cannot register Chef for startup" unless cmd
-cmd_params=ENV["CHEF_CONFIG"]
-cmd_params||=node.fetch("chef",{})["config"]
-raise "No chef configuration attribute defined. Add node[\"chef\"][\"config\"] to your configuration or define CHEF_CONFIG" unless cmd_params
-
 windows_auto_run 'Chef Run' do
   program cmd
   args    "#{cmd_params}"
