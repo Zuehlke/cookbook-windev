@@ -1,10 +1,10 @@
-#All-in-one Windows development environments
+# All-in-one Windows development environments
 
 [![Build Status](https://travis-ci.org/Zuehlke/cookbook-windev.svg)](http://travis-ci.org/Zuehlke/cookbook-windev)
 
 One cookbook with recipes and resources for setting up a Windows development environment.
 
-##Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
+## Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
 
 Please do if it suits you!
 
@@ -12,9 +12,7 @@ There's also a convenience wrapper for chocolatey added to windev since 0.4.0.
 
 Having said that, controlling the installation location is more obvious in windev. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
 
-##Recipes
-
-##[depot.rb](recipes/depot.rb)
+## [depot.rb](recipes/depot.rb)
 
 This recipe just sets up the local software cache. It is used by all recipes that install software.
 
@@ -40,7 +38,7 @@ You can define a node attribute 'cache' to specify packages to download and cach
 
 *This is a helper feature for downloading packages that are later manually installed (as is the case with unsigned drivers). Generally it is not needed if the installers are well behaved (but many are not).*
 
-##[features.rb](recipes/features.rb)
+## [features.rb](recipes/features.rb)
 
 The features recipe:
 
@@ -59,7 +57,7 @@ Example:
 }
 ```
 
-##[drivers.rb](recipes/drivers.rb)
+## [drivers.rb](recipes/drivers.rb)
 
 Installs Windows drivers using dpinst.
 
@@ -79,11 +77,11 @@ The certificate should either be a part of the driver package or provided in the
 
 *This recipe is for the moment specific to 64bit Windows installations. For drivers whose publisher is untrusted you will need to include the publisher's certificate in the cookbook. It will not work at all with unsigned drivers*
 
-##[packages.rb](recipes/packages.rb)
+## [packages.rb](recipes/packages.rb)
 
 This recipe provides three ways for software installation: installer-driven, from a zip file or through [chocolatey](https://chocolatey.org/).
 
-###Installer driven
+### Installer driven
 
 The `installer_packages` attribute expects an array of installer definitions.
 
@@ -121,14 +119,9 @@ The installers need to be capable of operating unattended (silent or quiet mode)
     }
   ]
 }
-
-
-
 ```
 
-
-
-###Zip files
+### Zip files
 
 The `zip_packages` attribute expects an array of zip definitions.
 
@@ -156,7 +149,7 @@ Example:
 }
 ```
 
-###Chocolatey
+### Chocolatey
 
 The `choco_packages` attribute expects an array of chocolatey package definitions.
 
@@ -169,7 +162,7 @@ Each package definition is a hash with parameters:
 
 All parameters but `name` are optional. Chocolatey will only be installed if choco_packages is not empty
 
-##[environment.rb](recipes/environment.rb)
+## [environment.rb](recipes/environment.rb)
 
 Provides an easy way to define environment variables in JSON configurations.
 
