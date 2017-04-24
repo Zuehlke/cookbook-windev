@@ -113,7 +113,7 @@ Each installer definition is a hash with parameters:
   * options - command line options to pass to the installer
   * type - when "custom" then Chef will not try to guess the type and use the path options only.
   * timeout - Time in seconds to wait for the installer to finish. Default is 600
-  * exit_codes - An optional list of additional allowed exit codes which. If given an exit code within the list will be interpreted as successful installation. Default is an empty list.
+  * exit_codes - An optional list of additional exit codes allowed. If given an exit code within the list it will be interpreted as successful installation. Default is an empty list.
 
 The installers need to be capable of operating unattended (silent or quiet mode).
 
