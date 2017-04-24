@@ -47,7 +47,7 @@ node.fetch('installer_packages',[]).each do |pkg|
       options pkg['options']
       version pkg['version']
       timeout pkg.fetch('timeout',600)
-      returns [0,3010]
+      returns [0,3010] + pkg.fetch('returns', [])
       action :install
     end
   end
