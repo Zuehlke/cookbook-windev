@@ -7,10 +7,6 @@
 
 require 'uri'
 
-def whyrun_supported?
-  false
-end
-
 def dpinst tmpfile
   Chef::Application.fatal!("Device driver package not found in #{tmpfile}") unless ::File.exist?(tmpfile)
   ["dpinst_amd64.exe","dpinst-amd64.exe","dpinst_x64.exe","dpinst-x64.exe"].each do |dp|
@@ -98,6 +94,5 @@ action :install do
     file versionfile do
       action :create
     end
-    new_resource.updated_by_last_action(true)
   end
 end

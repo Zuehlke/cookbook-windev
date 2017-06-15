@@ -1,3 +1,5 @@
+# 0.7.0
+ * Allow custom acceptable return codes in package installer config (MarkusPalcer)
 # 0.6.0
  * Add the auto_chef/remove_auto_chef recipes
 

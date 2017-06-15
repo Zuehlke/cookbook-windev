@@ -3,7 +3,7 @@ Stove::RakeTask.new
 
 def prepare_foodcritic_sandbox(sandbox)
   files = %w{*.md *.rb attributes definitions files libraries providers
-recipes resources templates}
+recipes resources templates LICENSE}
   rm_rf sandbox
   mkdir_p sandbox
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox

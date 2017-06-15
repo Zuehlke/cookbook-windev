@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
 group :development do
-  gem 'foodcritic', "~>8.1.0", :require => false
-  gem "stove","~>4.1.1", :require => false
+  gem 'foodcritic', "~>11.2.0", :require => false
+  gem "stove","~>5.2.0", :require => false
 end

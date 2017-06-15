@@ -7,10 +7,6 @@
 
 require 'uri'
 
-def whyrun_supported?
-  false
-end
-
 use_inline_resources
 
 action :cache do
@@ -25,7 +21,6 @@ action :cache do
       source new_resource.source
       action :create_if_missing
     end
-    new_resource.updated_by_last_action(true)
   end
 end
 
