@@ -37,6 +37,6 @@ end
 #Register the chef command to run on startup
 windows_auto_run 'Chef Run' do
   program cmd
-  args    "#{cmd_params}"
+  args    cmd_params
   action  :create
 end
