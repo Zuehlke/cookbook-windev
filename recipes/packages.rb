@@ -32,7 +32,7 @@ node.fetch('installer_packages',[]).each do |pkg|
     else
       installer= ::File.join(node["software_depot"],pkg['save_as'])
     end
-    
+
     ruby_block "installer_exists" do
       block do
         raise "Installer #{File.expand_path(installer)} not found" unless File.exist?(File.expand_path(installer))
@@ -43,7 +43,7 @@ node.fetch('installer_packages',[]).each do |pkg|
     package pkg['name'] do # ~FC009
       provider Chef::Provider::Package::Windows
       source File.expand_path(installer)
-      installer_type pkg['type'].to_sym if pkg['type'] 
+      installer_type pkg['type'].to_sym if pkg['type']
       options pkg['options']
       version pkg['version']
       timeout pkg.fetch('timeout',600)
@@ -73,7 +73,7 @@ node.fetch('zip_packages',[]).each do |pkg|
       source installer
       action :unzip
     end
-    file version do 
+    file version do
       action :create
     end
   end
@@ -89,11 +89,13 @@ choco_packages.each do |pkg|
   if pkg["name"]
     pkg_source=pkg.fetch("source","")
     pkg_args=pkg.fetch("args","")
+    pkg_options=pkg.fetch("options","")
     pkg_version=pkg.fetch("version","")
     chocolatey pkg["name"] do
       version pkg_version unless pkg_version.empty?
       source pkg_source unless pkg_source.empty?
       args pkg_args unless pkg_args.empty?
+      options pkg_options unless pkg_options.empty?
       action :install
     end
   end

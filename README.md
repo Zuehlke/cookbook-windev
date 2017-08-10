@@ -175,9 +175,10 @@ The `choco_packages` attribute expects an array of chocolatey package definition
 Each package definition is a hash with parameters:
 
   * name - name of the package
-  * source
+  * source - the source from which to install the package (choco `--source` flag)
   * version - version of the package to use
-  * args - arguments to the installation
+  * options - commandline options to be passed to chocolatey
+  * args - arguments to be passed to the underlying native installer (choco `--install-arguments` flag)
 
 All parameters but `name` are optional. Chocolatey will only be installed if choco_packages is not empty
 
