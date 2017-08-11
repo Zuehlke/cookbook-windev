@@ -1,8 +1,12 @@
 # 0.7.0
  * Allow custom acceptable return codes in package installer config (MarkusPalcer)
+ * Updated all cookbook and gem dependencies.
+ * It's now Chef >12.6
+ * Fixed default attribut values (tknerr)
+ * Allow setting of options for chockolatey (tknerr)
+
 # 0.6.0
  * Add the auto_chef/remove_auto_chef recipes
-
 # 0.5.1
  * Add return code 3010 (requires reboot) back to the list of acceptable return codes for package installers
  * Update windows cookbook dependency to 2.1.1
