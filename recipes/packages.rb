@@ -33,7 +33,7 @@ node.fetch('installer_packages',[]).each do |pkg|
       installer= ::File.join(node["software_depot"],pkg['save_as'])
     end
 
-    ruby_block "installer_exists" do
+    ruby_block "#{installer} exists" do
       block do
         raise "Installer #{File.expand_path(installer)} not found" unless File.exist?(File.expand_path(installer))
       end
