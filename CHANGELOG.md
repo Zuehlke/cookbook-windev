@@ -1,3 +1,7 @@
+#0.8.0
+  * Chocolatey support now uses the Chef resource.
+  * Chef dependency now >=12.7
+  * Removed dependency to chocolatey cookbook
 # 0.7.0
  * Allow custom acceptable return codes in package installer config (MarkusPalcer)
  * Updated all cookbook and gem dependencies.

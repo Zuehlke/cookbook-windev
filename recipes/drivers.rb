@@ -3,7 +3,7 @@
 # Cookbook Name:: windev
 # Recipe:: drivers
 #
-# Copyright (c) 2014-2016 Zühlke, All Rights Reserved.
+# Copyright (c) 2014-2018 Zühlke, All Rights Reserved.
 
 include_recipe 'windev::depot'
 
