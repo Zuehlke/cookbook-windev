@@ -1,5 +1,6 @@
 # 0.8.1
   * Upgrade foodcritic and handle the deprecations.
+  * Reintroduce the chocolatey dependency as we need it to install chocolatey.
   
 # 0.8.0
   * Chocolatey support now uses the Chef resource.

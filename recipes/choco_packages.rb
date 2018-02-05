@@ -9,7 +9,11 @@ include_recipe 'windev::depot'
 ::Chef::Recipe.send(:include, Windows::Helper)
 
 choco_packages=node.fetch('choco_packages',[])
+choco_packages=node.fetch('choco_packages',[])
 
+unless choco_packages.empty?
+  include_recipe 'chocolatey::default'
+end
 choco_packages.each do |pkg|
   if pkg["name"]
     pkg_source=pkg.fetch("source","")
