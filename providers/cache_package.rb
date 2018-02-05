@@ -7,7 +7,7 @@
 
 require 'uri'
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 action :cache do
   if validate_source_attribute(new_resource)

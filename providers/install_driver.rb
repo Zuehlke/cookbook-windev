@@ -19,7 +19,7 @@ def dpinst tmpfile
   Chef::Application.fatal!("Windows device driver package did not include a recognized instance of DPINST")
 end
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 action :install do
   tmpfile=::File.expand_path(::File.join(ENV['TEMP'],new_resource.name.gsub(" ","_")))

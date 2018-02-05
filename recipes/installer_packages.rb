@@ -38,8 +38,7 @@ node.fetch('installer_packages',[]).each do |pkg|
       action :run
     end
 
-    package pkg['name'] do # ~FC009
-      provider Chef::Provider::Package::Windows
+    windows_package pkg['name'] do
       source File.expand_path(installer)
       installer_type pkg['type'].to_sym if pkg['type']
       options pkg['options']
