@@ -6,11 +6,7 @@ One cookbook with recipes and resources for setting up a Windows development env
 
 ## Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
 
-Please do if it suits you!
-
-There's also a convenience wrapper for chocolatey added to windev since 0.4.0.
-
-Having said that, controlling the installation location is more obvious in windev. The idea is that in windev you choose the installer yourself so configuration is more prominent and it's easier to figure out the custom arguments required.
+Please do - it only depends on the availability of the packages you need. windev also offers a convenience wrapper for chocolatey when the need arises to combine different installation methods.
 
 ## [auto_chef](recipes/auto_chef.rb)
 
@@ -99,6 +95,8 @@ The certificate should either be a part of the driver package or provided in the
 
 This recipe provides three ways for software installation: installer-driven, from a zip file or through [chocolatey](https://chocolatey.org/).
 
+Each method is also usable separately (installer_packages, zip_packages and choco_packages respectively).
+
 ### Installer driven
 
 The `installer_packages` attribute expects an array of installer definitions.
@@ -177,10 +175,19 @@ Each package definition is a hash with parameters:
   * name - name of the package
   * source - the source from which to install the package (choco `--source` flag)
   * version - version of the package to use
-  * options - commandline options to be passed to chocolatey
-  * args - arguments to be passed to the underlying native installer (choco `--install-arguments` flag)
+  * options - commandline options to be passed to chocolatey directly
+  * params - options to be passed to the package installer (the --package option).
 
-All parameters but `name` are optional. Chocolatey will only be installed if choco_packages is not empty
+All parameters but `name` are optional.
+
+Example: 
+```json
+{
+  "name":"Ruby",
+  "version":"2.4.3.1",
+  "params":"/InstallDir=c:\\tools\\ruby"
+}
+```
 
 ## [environment.rb](recipes/environment.rb)
 
