@@ -6,7 +6,7 @@ One cookbook with recipes and resources for setting up a Windows development env
 
 ## Why not use [chocolatey](https://github.com/chocolatey/chocolatey-cookbook)?
 
-Please do - it only depends on the availability of the packages you need. windev also offers a convenience wrapper for chocolatey when the need arises to combine different installation methods.
+Please do. windev offers a convenience wrapper for chocolatey just like it does for plain installers and zip archives. Check the doc for choco_packages. - it only depends on the availability of the packages you need.
 
 ## [auto_chef](recipes/auto_chef.rb)
 

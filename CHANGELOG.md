@@ -1,3 +1,6 @@
+# 0.8.2
+  * Add handling of params (concatenates params with --parameters onto the options)
+
 # 0.8.1
   * Upgrade foodcritic and handle the deprecations.
   * Reintroduce the chocolatey dependency as we need it to install chocolatey.

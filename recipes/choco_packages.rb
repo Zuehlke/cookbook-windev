@@ -19,6 +19,11 @@ choco_packages.each do |pkg|
     pkg_source=pkg.fetch("source","")
     pkg_options=pkg.fetch("options","")
     pkg_version=pkg.fetch("version","")
+    pkg_params=pkg.fetch("params","")
+
+    if !pkg_params.empty?
+      pkg_options<<" --parameters #{pkg_params}"
+    end
     chocolatey_package pkg["name"] do
       version pkg_version unless pkg_version.empty?
       source pkg_source unless pkg_source.empty?
