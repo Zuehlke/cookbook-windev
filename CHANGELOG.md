@@ -1,3 +1,5 @@
+# 0.8.3
+  * Allow 3010 as a valid return code for a chocolatey package and add exit_codes to config for custom entries
 # 0.8.2
   * Add handling of params (concatenates params with --parameters onto the options)
 
