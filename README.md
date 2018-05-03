@@ -147,7 +147,7 @@ Each zip definition is a hash with parameters:
   * archive - defines the filename for the package if no cache is used (source & save_as are ommited). Relative to `sofware_depot`
   * source & save_as - The URL from where the package can be downloaded and the filename for the downloaded content (relative to `sofware_depot`)
   * unpack - location to unpack the archive
-  * version - the version of the software
+  * version - the version of the software. Setting this to `null` will cause the package to be removed if it is installed in any version
 
 Example:
 
@@ -161,7 +161,11 @@ Example:
 ####This entry expects the package in the software_depot directory
     {"archive":"foo.zip",
       "version":"0.0","unpack":"c:/tools/foo"
-    }
+    },
+####This entry will remove any package installed in C:\tools\foo
+    {"source":"ftp://bin.repo/foo.zip","save_as":"foo.zip",
+      "version":null,"unpack":"c:/tools/foo"
+    },
   ]
 }
 ```
