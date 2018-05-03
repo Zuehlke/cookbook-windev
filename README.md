@@ -177,7 +177,8 @@ Each package definition is a hash with parameters:
   * version - version of the package to use
   * options - commandline options to be passed to chocolatey directly
   * params - options to be passed to the package installer (the --package option).
-
+  * exit_codes - An optional list of additional exit codes allowed. If given an exit code within the list it will be interpreted as successful installation. Default is an empty list.
+  
 All parameters but `name` are optional.
 
 Example: 

@@ -28,6 +28,7 @@ choco_packages.each do |pkg|
       version pkg_version unless pkg_version.empty?
       source pkg_source unless pkg_source.empty?
       options pkg_options unless pkg_options.empty?
+      returns [0,3010] + pkg.fetch('exit_codes', [])
       action :install
     end
   end
