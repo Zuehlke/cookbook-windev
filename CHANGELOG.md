@@ -1,3 +1,6 @@
+# 0.8.4
+  * Update windows cookbook version
+  * Ensure setting environment default does not break on Chef13 (kimo)
 # 0.8.3
   * Allow 3010 as a valid return code for a chocolatey package and add exit_codes to config for custom entries
 # 0.8.2
