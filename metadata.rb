@@ -11,5 +11,5 @@ source_url 'https://github.com/Zuehlke/cookbook-windev' if respond_to?(:source_u
 
 supports 'windows'
 
-depends 'windows',"~>3.4.4"
+depends 'windows',"~>5.2.2"
 depends 'chocolatey','~>2.0.1'
