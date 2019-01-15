@@ -50,3 +50,5 @@ Gemfile.lock
 bin/*
 .bundle/*
 *.bak
+# mac
+.DS_Store
