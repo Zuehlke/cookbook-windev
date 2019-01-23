@@ -43,5 +43,6 @@ choco_packages.each do |pkg|
         returns [0,3010] + pkg.fetch('exit_codes', [])
         action :install
       end
+    end
   end
 end
