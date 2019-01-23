@@ -21,7 +21,7 @@ choco_packages.each do |pkg|
     pkg_version=pkg.fetch("version","")
     pkg_params=pkg.fetch("params","")
 
-    do_upgrade = pkg_params=pkg.fetch("upgrade",false)
+    do_upgrade=pkg.fetch("upgrade",false)
 
     if !pkg_params.empty?
       pkg_options<<" --parameters #{pkg_params}"
