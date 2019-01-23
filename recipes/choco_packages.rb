@@ -21,15 +21,27 @@ choco_packages.each do |pkg|
     pkg_version=pkg.fetch("version","")
     pkg_params=pkg.fetch("params","")
 
+    do_upgrade = pkg_params=pkg.fetch("upgrade",false)
+
     if !pkg_params.empty?
       pkg_options<<" --parameters #{pkg_params}"
     end
-    chocolatey_package pkg["name"] do
-      version pkg_version unless pkg_version.empty?
-      source pkg_source unless pkg_source.empty?
-      options pkg_options unless pkg_options.empty?
-      returns [0,3010] + pkg.fetch('exit_codes', [])
-      action :install
-    end
+
+    if do_upgrade
+      chocolatey_package pkg["name"] do
+        version pkg_version unless pkg_version.empty?
+        source pkg_source unless pkg_source.empty?
+        options pkg_options unless pkg_options.empty?
+        returns [0,3010] + pkg.fetch('exit_codes', [])
+        action :upgrade
+      end  
+    else
+      chocolatey_package pkg["name"] do
+        version pkg_version unless pkg_version.empty?
+        source pkg_source unless pkg_source.empty?
+        options pkg_options unless pkg_options.empty?
+        returns [0,3010] + pkg.fetch('exit_codes', [])
+        action :install
+      end
   end
 end
