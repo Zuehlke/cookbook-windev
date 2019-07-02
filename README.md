@@ -125,7 +125,9 @@ Each package definition is a hash with parameters:
   
 All parameters but `name` are optional.
 
-Example:
+**Examples:**
+
+Install a chocolatey package
 
 ```json
 {
@@ -134,6 +136,21 @@ Example:
       "name":"Ruby",
       "version":"2.4.3.1",
       "params":"/InstallDir=c:\\tools\\ruby"
+    }
+  ]
+}
+```
+
+Upgrade a package
+
+```json
+{
+  "choco_packages": [
+    {
+      "name":"Ruby",
+      "version":"2.4.3.1",
+      "params":"/InstallDir=c:\\tools\\ruby",
+      "upgrade":true
     }
   ]
 }

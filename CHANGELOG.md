@@ -3,6 +3,7 @@
 ## 1.0.0
 
 * Require Chef >=14
+* Allow for chocolatey package upgrades
 * Update windows cookbook dependency
 * Update chocolatey cookbook dependency
 * Remove god mode trick
