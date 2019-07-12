@@ -10,12 +10,6 @@ node['windows_features']['remove'].each do |feat|
   end
 end
 
-ruby_block "GodMode" do
-  block do
-    FileUtils.mkdir_p "#{ENV['USERPROFILE']}\\Desktop\\GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}"
-  end
-end
-
 batch "firewall off" do
   code <<-EOT
   NetSh Advfirewall set allprofiles state off

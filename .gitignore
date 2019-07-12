@@ -46,7 +46,6 @@ pkg/
 .vagrant
 Berksfile.lock
 # Bundler
-Gemfile.lock
 bin/*
 .bundle/*
 *.bak

@@ -9,7 +9,6 @@ include_recipe 'windev::depot'
 ::Chef::Recipe.send(:include, Windows::Helper)
 
 choco_packages=node.fetch('choco_packages',[])
-choco_packages=node.fetch('choco_packages',[])
 
 unless choco_packages.empty?
   include_recipe 'chocolatey::default'
@@ -21,15 +20,19 @@ choco_packages.each do |pkg|
     pkg_version=pkg.fetch("version","")
     pkg_params=pkg.fetch("params","")
 
+    package_action=:install
+    package_action=:upgrade if pkg.fetch("upgrade",false)
+
     if !pkg_params.empty?
       pkg_options<<" --parameters #{pkg_params}"
     end
+
     chocolatey_package pkg["name"] do
       version pkg_version unless pkg_version.empty?
       source pkg_source unless pkg_source.empty?
       options pkg_options unless pkg_options.empty?
       returns [0,3010] + pkg.fetch('exit_codes', [])
-      action :install
-    end
+      action package_action
+    end 
   end
 end
