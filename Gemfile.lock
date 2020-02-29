@@ -31,7 +31,7 @@ GEM
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     polyglot (0.3.5)
-    rake (12.3.2)
+    rake (13.0.1)
     rufus-lru (1.1.0)
     stove (7.1.0)
       chef-api (~> 0.5)
