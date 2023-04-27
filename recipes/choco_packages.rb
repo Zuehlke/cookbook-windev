@@ -24,7 +24,8 @@ choco_packages.each do |pkg|
     package_action=:upgrade if pkg.fetch("upgrade",false)
 
     if !pkg_params.empty?
-      pkg_options<<" --parameters #{pkg_params}"
+      pkg_options<<"--parameters"
+      pkg_options<<"#{pkg_params}"
     end
 
     chocolatey_package pkg["name"] do
