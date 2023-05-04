@@ -16,7 +16,7 @@ end
 choco_packages.each do |pkg|
   if pkg["name"]
     pkg_source=pkg.fetch("source","")
-    pkg_options=pkg.fetch("options","")
+    pkg_options=pkg.fetch("options",[])
     pkg_version=pkg.fetch("version","")
     pkg_params=pkg.fetch("params","")
 
@@ -24,8 +24,9 @@ choco_packages.each do |pkg|
     package_action=:upgrade if pkg.fetch("upgrade",false)
 
     if !pkg_params.empty?
+      pkg_options = pkg_options.dup
       pkg_options<<"--parameters"
-      pkg_options<<"#{pkg_params}"
+      pkg_options<<pkg_params
     end
 
     chocolatey_package pkg["name"] do
