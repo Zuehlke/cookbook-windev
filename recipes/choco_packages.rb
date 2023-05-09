@@ -2,7 +2,7 @@
 # Cookbook Name:: windev
 # Recipe:: choco_packages
 #
-# Copyright (c) 2014-2018 Zühlke, All Rights Reserved.
+# Copyright (c) 2014-2023 Zühlke, All Rights Reserved.
 
 include_recipe 'windev::depot'
 
@@ -16,16 +16,24 @@ end
 choco_packages.each do |pkg|
   if pkg["name"]
     pkg_source=pkg.fetch("source","")
-    pkg_options=pkg.fetch("options","")
+    pkg_options=pkg.fetch("options",[])
     pkg_version=pkg.fetch("version","")
     pkg_params=pkg.fetch("params","")
 
     package_action=:install
     package_action=:upgrade if pkg.fetch("upgrade",false)
 
+    if pkg_options.is_a? String
+      # tokenization taken from: https://stackoverflow.com/a/27742127 (CC BY-SA 3.0)
+      pkg_options = pkg_options.split(/\s(?=(?:[^'"]|'[^']*'|"[^"]*")*$)/)
+        .select {|s| not s.empty? }
+        .map {|s| s.gsub(/(^ +)|( +$)|(^["']+)|(["']+$)/,'')}
+    end
+
     if !pkg_params.empty?
+      pkg_options = pkg_options.dup
       pkg_options<<"--parameters"
-      pkg_options<<"#{pkg_params}"
+      pkg_options<<pkg_params
     end
 
     chocolatey_package pkg["name"] do
