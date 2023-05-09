@@ -1,5 +1,9 @@
 # windev changelog
 
+## 1.0.1
+
+* Fix a bug in passing options and params to choco packages (bueddl)
+
 ## 1.0.0
 
 * Require Chef >=14
