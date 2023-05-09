@@ -1,24 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    chef-api (0.10.10)
-      mime-types
-      mixlib-log (>= 1, < 4)
-    mime-types (3.4.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0218.1)
-    mixlib-log (3.0.9)
     rake (13.0.6)
-    stove (7.1.6)
-      chef-api (~> 0.5)
-      mixlib-log (>= 2.0)
 
 PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
   rake
-  stove (~> 7.1.0)
 
 BUNDLED WITH
    2.4.10
