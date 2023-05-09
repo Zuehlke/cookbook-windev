@@ -1,52 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.15.0)
-    chef-api (0.9.0)
-      logify (~> 0.1)
+    chef-api (0.10.10)
       mime-types
-    cucumber-core (3.2.1)
-      backports (>= 3.8.0)
-      cucumber-tag_expressions (~> 1.1.0)
-      gherkin (~> 5.0)
-    cucumber-tag_expressions (1.1.1)
-    erubis (2.7.0)
-    ffi-yajl (2.3.1)
-      libyajl2 (~> 1.2)
-    foodcritic (16.0.0)
-      cucumber-core (>= 1.3, < 4.0)
-      erubis
-      ffi-yajl (~> 2.0)
-      nokogiri (>= 1.5, < 2.0)
-      rake
-      rufus-lru (~> 1.0)
-      treetop (~> 1.4)
-    gherkin (5.1.0)
-    libyajl2 (1.2.0)
-    logify (0.2.0)
-    mime-types (3.2.2)
+      mixlib-log (>= 1, < 4)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.0331)
-    mini_portile2 (2.8.1)
-    nokogiri (1.14.3)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    polyglot (0.3.5)
-    racc (1.6.2)
-    rake (13.0.1)
-    rufus-lru (1.1.0)
-    stove (7.1.0)
+    mime-types-data (3.2023.0218.1)
+    mixlib-log (3.0.9)
+    rake (13.0.6)
+    stove (7.1.6)
       chef-api (~> 0.5)
-      logify (~> 0.2)
-    treetop (1.6.10)
-      polyglot (~> 0.3)
+      mixlib-log (>= 2.0)
 
 PLATFORMS
-  ruby
+  arm64-darwin-21
 
 DEPENDENCIES
-  foodcritic (~> 16.0.0)
+  rake
   stove (~> 7.1.0)
 
 BUNDLED WITH
-   2.0.2
+   2.4.10
